@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Management</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <p>Welcome, {{ current_user.username }} | <a href="{{ url_for('logout') }}">Logout</a></p>
+
+    <h1>Employee List</h1>
+    <a href="{{ url_for('add_employee') }}">Add New Employee</a>
+    <ul>
+        {% for emp in employees %}
+            <li>{{ emp.name }} - {{ emp.department }}
+                <a href="{{ url_for('delete_employee', id=emp.id) }}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
